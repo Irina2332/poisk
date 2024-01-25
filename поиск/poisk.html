@@ -4,33 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <style>
-      body {
-        width: 100%;
-        height: 100%;
-      }
-      #searchResults {
-        margin-top: 17px;
-        border: 1px solid #ccc;
-        max-height: 200px;
-        font-size: 20px;
-        padding: 5px;
-        overflow-y: auto;
-      }
-      .poisk {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-        font-size: 20px;
-        background: #2c3b361a;
-        padding: 20px 40px 40px 20px;
-      }
-      input[type="text"] {
-        background: rgb(242, 233, 158);
-        font-size: 20px;
-      }
-    </style>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src=""></script>
   </head>
   <body>
     <div class="poisk">
@@ -46,47 +21,6 @@
       </form>
     </div>
 
-    <script>
-      // Список слов для демонстрационных целей
-      var words = [
-        "яблоко",
-        "банан",
-        "апельсин",
-        "виноград",
-        "слива",
-        "персик",
-      ];
 
-      document.getElementById("search").addEventListener("input", function () {
-        var searchValue = this.value.toLowerCase();
-        var results = words.filter(function (word) {
-          return word.toLowerCase().includes(searchValue);
-        });
-
-        var searchResults = document.getElementById("searchResults");
-        searchResults.innerHTML = "";
-        if (searchValue.length > 0) {
-          results.forEach(function (result) {
-            var resultItem = document.createElement("div");
-            resultItem.textContent = result;
-            resultItem.addEventListener("click", function () {
-              document.getElementById("search").value = this.textContent;
-              searchResults.style.display = "none";
-            });
-            searchResults.appendChild(resultItem);
-          });
-
-          searchResults.style.display = "block";
-        } else {
-          searchResults.style.display = "none";
-        }
-      });
-
-      document.addEventListener("click", function (e) {
-        if (e.target.id !== "search") {
-          document.getElementById("searchResults").style.display = "none";
-        }
-      });
-    </script>
   </body>
 </html>
